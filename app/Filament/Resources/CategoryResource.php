@@ -22,6 +22,7 @@ use Illuminate\Support\Str;
 class CategoryResource extends Resource
 {
     protected static ?string $model = Category::class;
+    protected static ?int $navigationSort = 3;
 
     protected static ?string $navigationIcon = 'heroicon-o-tag';
 
