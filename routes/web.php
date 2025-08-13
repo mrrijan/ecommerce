@@ -24,8 +24,8 @@ Route::middleware(['guest'])->group(function () {
 //logins
     Route::get("/login",\App\Livewire\Auth\Login::class)->name('login');
     Route::get("/register",RegisterPage::class);
-    Route::get("/forgot-password",ForgotPasswordPage::class);
-    Route::get("/reset-password",ResetPasswordPage::class);
+    Route::get("/forgot",ForgotPasswordPage::class)->name('password.request');
+    Route::get("/reset/{token}",ResetPasswordPage::class)->name('password.reset');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -35,7 +35,7 @@ Route::middleware(['auth'])->group(function () {
     });
     Route::get("/checkout",CheckoutPage::class);
     Route::get("/my-orders",MyOrdersPage::class);
-    Route::get("/my-orders/{order}",\App\Livewire\MyOrderDetailPage::class);
-    Route::get("/success",SuccessPage::class);
-    Route::get("/cancel",CancelPage::class);
+    Route::get("/my-orders/{order_id}",\App\Livewire\MyOrderDetailPage::class)->name('my-orders.show');
+    Route::get("/success",SuccessPage::class)->name('success');
+    Route::get("/cancel",CancelPage::class)->name('cancel');
 });
